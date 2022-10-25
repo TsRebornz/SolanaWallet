@@ -1,12 +1,10 @@
 import UIKit
 
-
-
 final class ReceiveViewController: UIViewController {
     
     private enum Static {
         enum Layout {
-            static let balanceStackViewInsets = 6.0
+            static let stackViewInsets = 16.0
         }
     }
     
@@ -14,7 +12,7 @@ final class ReceiveViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.systemFont(
             ofSize: 22,
-            weight: UIFont.Weight(rawValue: 1000)
+            weight: UIFont.Weight.bold
         )
         label.text = "Balance"
         
@@ -25,7 +23,7 @@ final class ReceiveViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.systemFont(
             ofSize: 22,
-            weight: UIFont.Weight(rawValue: 300)
+            weight: UIFont.Weight.regular
         )
         return label
     }()
@@ -40,6 +38,36 @@ final class ReceiveViewController: UIViewController {
         return stackView
     }()
     
+    private let addressLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(
+            ofSize: 14,
+            weight: UIFont.Weight.regular
+        )
+        label.textAlignment = .center
+        
+        return label
+    }()
+    
+    private let copyAddressButton: UIButton = {
+        let button = UIButton()
+        let copyImage = UIImage(systemName: "doc.on.doc")
+        button.setImage(copyImage, for: .normal)
+        button.addTarget(self, action: #selector(copyAddressButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var addressStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.addArrangedSubview(addressLabel)
+        stackView.addArrangedSubview(copyAddressButton)
+        
+        return stackView
+    }()
+    
+    // MARK: - View life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,27 +75,47 @@ final class ReceiveViewController: UIViewController {
         
         setupUI()
         balanceLabel.text = "1000"
+        addressLabel.text = "1xfdfafjeojo3409jlx09j0j3lkjdasjfasdlf"
         
     }
     
+    // MARK: - Private
+    
     private func setupUI() {
+        
+        // Balance
         view.addSubview(balanceStackView)
         
         NSLayoutConstraint.activate([
             balanceStackView.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor,
-                constant: Static.Layout.balanceStackViewInsets
+                constant: Static.Layout.stackViewInsets
             ),
             balanceStackView.topAnchor.constraint(
                 equalTo: view.safeAreaLayoutGuide.topAnchor,
-                constant: Static.Layout.balanceStackViewInsets
+                constant: Static.Layout.stackViewInsets
             ),
             balanceStackView.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor,
-                constant: -Static.Layout.balanceStackViewInsets
+                constant: -Static.Layout.stackViewInsets
             )
         ])
         
+        // Address
+        
+        view.addSubview(addressStackView)
+        
+        NSLayoutConstraint.activate([
+            addressStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Static.Layout.stackViewInsets),
+            addressStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Static.Layout.stackViewInsets),
+            addressStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        
+    }
+    
+    @objc
+    private func copyAddressButtonTapped() {
+        UIPasteboard.general.string = addressLabel.text
     }
 
 }
