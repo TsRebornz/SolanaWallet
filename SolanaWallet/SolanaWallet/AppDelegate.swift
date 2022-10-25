@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import TweetNacl
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -15,6 +15,8 @@
 		A1886C522907E671006825F0 /* SolanaWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C512907E671006825F0 /* SolanaWalletUITests.swift */; };
 		A1886C542907E671006825F0 /* SolanaWalletUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C532907E671006825F0 /* SolanaWalletUITestsLaunchTests.swift */; };
 		A1886C612907FA0D006825F0 /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C602907FA0D006825F0 /* SendViewController.swift */; };
+		A1886C6429084BCB006825F0 /* TweetNacl in Frameworks */ = {isa = PBXBuildFile; productRef = A1886C6329084BCB006825F0 /* TweetNacl */; };
+		A1886C6629084CD3006825F0 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C6529084CD3006825F0 /* NetworkModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,7 @@
 		A1886C512907E671006825F0 /* SolanaWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolanaWalletUITests.swift; sourceTree = "<group>"; };
 		A1886C532907E671006825F0 /* SolanaWalletUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolanaWalletUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A1886C602907FA0D006825F0 /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
+		A1886C6529084CD3006825F0 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1886C6429084BCB006825F0 /* TweetNacl in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +107,7 @@
 				A1886C392907E671006825F0 /* Assets.xcassets */,
 				A1886C3B2907E671006825F0 /* LaunchScreen.storyboard */,
 				A1886C3E2907E671006825F0 /* Info.plist */,
+				A1886C6529084CD3006825F0 /* NetworkModel.swift */,
 			);
 			path = SolanaWallet;
 			sourceTree = "<group>";
@@ -140,6 +145,9 @@
 			dependencies = (
 			);
 			name = SolanaWallet;
+			packageProductDependencies = (
+				A1886C6329084BCB006825F0 /* TweetNacl */,
+			);
 			productName = SolanaWallet;
 			productReference = A1886C2D2907E66F006825F0 /* SolanaWallet.app */;
 			productType = "com.apple.product-type.application";
@@ -212,6 +220,9 @@
 				Base,
 			);
 			mainGroup = A1886C242907E66F006825F0;
+			packageReferences = (
+				A1886C6229084BCB006825F0 /* XCRemoteSwiftPackageReference "tweetnacl-swiftwrap" */,
+			);
 			productRefGroup = A1886C2E2907E66F006825F0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -254,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1886C6629084CD3006825F0 /* NetworkModel.swift in Sources */,
 				A1886C352907E66F006825F0 /* ReceiveViewController.swift in Sources */,
 				A1886C312907E66F006825F0 /* AppDelegate.swift in Sources */,
 				A1886C612907FA0D006825F0 /* SendViewController.swift in Sources */,
@@ -590,6 +602,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A1886C6229084BCB006825F0 /* XCRemoteSwiftPackageReference "tweetnacl-swiftwrap" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bitmark-inc/tweetnacl-swiftwrap.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A1886C6329084BCB006825F0 /* TweetNacl */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A1886C6229084BCB006825F0 /* XCRemoteSwiftPackageReference "tweetnacl-swiftwrap" */;
+			productName = TweetNacl;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A1886C252907E66F006825F0 /* Project object */;
 }
