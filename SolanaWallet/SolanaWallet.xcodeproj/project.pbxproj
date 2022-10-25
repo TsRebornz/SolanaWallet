@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		A1886C312907E66F006825F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C302907E66F006825F0 /* AppDelegate.swift */; };
-		A1886C352907E66F006825F0 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C342907E66F006825F0 /* TransactionViewController.swift */; };
+		A1886C352907E66F006825F0 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C342907E66F006825F0 /* ReceiveViewController.swift */; };
 		A1886C3A2907E671006825F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1886C392907E671006825F0 /* Assets.xcassets */; };
 		A1886C3D2907E671006825F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1886C3B2907E671006825F0 /* LaunchScreen.storyboard */; };
 		A1886C482907E671006825F0 /* SolanaWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C472907E671006825F0 /* SolanaWalletTests.swift */; };
 		A1886C522907E671006825F0 /* SolanaWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C512907E671006825F0 /* SolanaWalletUITests.swift */; };
 		A1886C542907E671006825F0 /* SolanaWalletUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C532907E671006825F0 /* SolanaWalletUITestsLaunchTests.swift */; };
+		A1886C612907FA0D006825F0 /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C602907FA0D006825F0 /* SendViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,7 @@
 /* Begin PBXFileReference section */
 		A1886C2D2907E66F006825F0 /* SolanaWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SolanaWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1886C302907E66F006825F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A1886C342907E66F006825F0 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
+		A1886C342907E66F006825F0 /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
 		A1886C392907E671006825F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1886C3C2907E671006825F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1886C3E2907E671006825F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +46,7 @@
 		A1886C4D2907E671006825F0 /* SolanaWalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SolanaWalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1886C512907E671006825F0 /* SolanaWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolanaWalletUITests.swift; sourceTree = "<group>"; };
 		A1886C532907E671006825F0 /* SolanaWalletUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolanaWalletUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A1886C602907FA0D006825F0 /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				A1886C302907E66F006825F0 /* AppDelegate.swift */,
-				A1886C342907E66F006825F0 /* TransactionViewController.swift */,
+				A1886C342907E66F006825F0 /* ReceiveViewController.swift */,
+				A1886C602907FA0D006825F0 /* SendViewController.swift */,
 				A1886C392907E671006825F0 /* Assets.xcassets */,
 				A1886C3B2907E671006825F0 /* LaunchScreen.storyboard */,
 				A1886C3E2907E671006825F0 /* Info.plist */,
@@ -251,8 +254,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1886C352907E66F006825F0 /* TransactionViewController.swift in Sources */,
+				A1886C352907E66F006825F0 /* ReceiveViewController.swift in Sources */,
 				A1886C312907E66F006825F0 /* AppDelegate.swift in Sources */,
+				A1886C612907FA0D006825F0 /* SendViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
