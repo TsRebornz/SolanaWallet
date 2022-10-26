@@ -8,15 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		A1886C312907E66F006825F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C302907E66F006825F0 /* AppDelegate.swift */; };
-		A1886C352907E66F006825F0 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C342907E66F006825F0 /* ReceiveViewController.swift */; };
 		A1886C3A2907E671006825F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1886C392907E671006825F0 /* Assets.xcassets */; };
 		A1886C3D2907E671006825F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1886C3B2907E671006825F0 /* LaunchScreen.storyboard */; };
 		A1886C482907E671006825F0 /* SolanaWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C472907E671006825F0 /* SolanaWalletTests.swift */; };
 		A1886C522907E671006825F0 /* SolanaWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C512907E671006825F0 /* SolanaWalletUITests.swift */; };
 		A1886C542907E671006825F0 /* SolanaWalletUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C532907E671006825F0 /* SolanaWalletUITestsLaunchTests.swift */; };
-		A1886C612907FA0D006825F0 /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C602907FA0D006825F0 /* SendViewController.swift */; };
 		A1886C6429084BCB006825F0 /* TweetNacl in Frameworks */ = {isa = PBXBuildFile; productRef = A1886C6329084BCB006825F0 /* TweetNacl */; };
-		A1886C6629084CD3006825F0 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C6529084CD3006825F0 /* NetworkModel.swift */; };
+		A1886C7929085780006825F0 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C7729085780006825F0 /* ReceiveViewController.swift */; };
+		A1886C7A29085780006825F0 /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C7829085780006825F0 /* SendViewController.swift */; };
+		A1886C83290857FF006825F0 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C7B290857FF006825F0 /* PublicKey.swift */; };
+		A1886C84290857FF006825F0 /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C7C290857FF006825F0 /* Mnemonic.swift */; };
+		A1886C85290857FF006825F0 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C7D290857FF006825F0 /* NetworkModel.swift */; };
+		A1886C86290857FF006825F0 /* PBKDF2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C7E290857FF006825F0 /* PBKDF2.swift */; };
+		A1886C88290857FF006825F0 /* SolanaAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C80290857FF006825F0 /* SolanaAccount.swift */; };
+		A1886C89290857FF006825F0 /* Base58.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C81290857FF006825F0 /* Base58.swift */; };
+		A1886C8A290857FF006825F0 /* SolanaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C82290857FF006825F0 /* SolanaError.swift */; };
+		A1886C8E2909481B006825F0 /* DerivablePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C8D2909481B006825F0 /* DerivablePath.swift */; };
+		A1886C9029094B39006825F0 /* Ed25519HDKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C8F29094B39006825F0 /* Ed25519HDKey.swift */; };
+		A1886C9229094BC1006825F0 /* HMAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C9129094BC1006825F0 /* HMAC.swift */; };
+		A1886C9729094CE8006825F0 /* Data + CryptoSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C9629094CE8006825F0 /* Data + CryptoSwift.swift */; };
+		A1886C9C29094D1B006825F0 /* String + CryptoSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C9B29094D1B006825F0 /* String + CryptoSwift.swift */; };
+		A1886C9E29094DCC006825F0 /* Array + CryptoSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C9D29094DCC006825F0 /* Array + CryptoSwift.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +51,6 @@
 /* Begin PBXFileReference section */
 		A1886C2D2907E66F006825F0 /* SolanaWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SolanaWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1886C302907E66F006825F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A1886C342907E66F006825F0 /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
 		A1886C392907E671006825F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1886C3C2907E671006825F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1886C3E2907E671006825F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,8 +59,21 @@
 		A1886C4D2907E671006825F0 /* SolanaWalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SolanaWalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1886C512907E671006825F0 /* SolanaWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolanaWalletUITests.swift; sourceTree = "<group>"; };
 		A1886C532907E671006825F0 /* SolanaWalletUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolanaWalletUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		A1886C602907FA0D006825F0 /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
-		A1886C6529084CD3006825F0 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
+		A1886C7729085780006825F0 /* ReceiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
+		A1886C7829085780006825F0 /* SendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
+		A1886C7B290857FF006825F0 /* PublicKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
+		A1886C7C290857FF006825F0 /* Mnemonic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mnemonic.swift; sourceTree = "<group>"; };
+		A1886C7D290857FF006825F0 /* NetworkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
+		A1886C7E290857FF006825F0 /* PBKDF2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBKDF2.swift; sourceTree = "<group>"; };
+		A1886C80290857FF006825F0 /* SolanaAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolanaAccount.swift; sourceTree = "<group>"; };
+		A1886C81290857FF006825F0 /* Base58.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base58.swift; sourceTree = "<group>"; };
+		A1886C82290857FF006825F0 /* SolanaError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolanaError.swift; sourceTree = "<group>"; };
+		A1886C8D2909481B006825F0 /* DerivablePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivablePath.swift; sourceTree = "<group>"; };
+		A1886C8F29094B39006825F0 /* Ed25519HDKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ed25519HDKey.swift; sourceTree = "<group>"; };
+		A1886C9129094BC1006825F0 /* HMAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMAC.swift; sourceTree = "<group>"; };
+		A1886C9629094CE8006825F0 /* Data + CryptoSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data + CryptoSwift.swift"; sourceTree = "<group>"; };
+		A1886C9B29094D1B006825F0 /* String + CryptoSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + CryptoSwift.swift"; sourceTree = "<group>"; };
+		A1886C9D29094DCC006825F0 /* Array + CryptoSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + CryptoSwift.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,13 +125,12 @@
 		A1886C2F2907E66F006825F0 /* SolanaWallet */ = {
 			isa = PBXGroup;
 			children = (
+				A1886C7629085780006825F0 /* UILayer */,
+				A1886C7529085756006825F0 /* SolanaAccount */,
 				A1886C302907E66F006825F0 /* AppDelegate.swift */,
-				A1886C342907E66F006825F0 /* ReceiveViewController.swift */,
-				A1886C602907FA0D006825F0 /* SendViewController.swift */,
 				A1886C392907E671006825F0 /* Assets.xcassets */,
 				A1886C3B2907E671006825F0 /* LaunchScreen.storyboard */,
 				A1886C3E2907E671006825F0 /* Info.plist */,
-				A1886C6529084CD3006825F0 /* NetworkModel.swift */,
 			);
 			path = SolanaWallet;
 			sourceTree = "<group>";
@@ -127,6 +150,43 @@
 				A1886C532907E671006825F0 /* SolanaWalletUITestsLaunchTests.swift */,
 			);
 			path = SolanaWalletUITests;
+			sourceTree = "<group>";
+		};
+		A1886C7529085756006825F0 /* SolanaAccount */ = {
+			isa = PBXGroup;
+			children = (
+				A1886C9529094CE8006825F0 /* CryptoSwift */,
+				A1886C81290857FF006825F0 /* Base58.swift */,
+				A1886C7C290857FF006825F0 /* Mnemonic.swift */,
+				A1886C7D290857FF006825F0 /* NetworkModel.swift */,
+				A1886C7E290857FF006825F0 /* PBKDF2.swift */,
+				A1886C7B290857FF006825F0 /* PublicKey.swift */,
+				A1886C80290857FF006825F0 /* SolanaAccount.swift */,
+				A1886C82290857FF006825F0 /* SolanaError.swift */,
+				A1886C8D2909481B006825F0 /* DerivablePath.swift */,
+				A1886C8F29094B39006825F0 /* Ed25519HDKey.swift */,
+				A1886C9129094BC1006825F0 /* HMAC.swift */,
+			);
+			path = SolanaAccount;
+			sourceTree = "<group>";
+		};
+		A1886C7629085780006825F0 /* UILayer */ = {
+			isa = PBXGroup;
+			children = (
+				A1886C7729085780006825F0 /* ReceiveViewController.swift */,
+				A1886C7829085780006825F0 /* SendViewController.swift */,
+			);
+			path = UILayer;
+			sourceTree = "<group>";
+		};
+		A1886C9529094CE8006825F0 /* CryptoSwift */ = {
+			isa = PBXGroup;
+			children = (
+				A1886C9629094CE8006825F0 /* Data + CryptoSwift.swift */,
+				A1886C9B29094D1B006825F0 /* String + CryptoSwift.swift */,
+				A1886C9D29094DCC006825F0 /* Array + CryptoSwift.swift */,
+			);
+			path = CryptoSwift;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,10 +325,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1886C6629084CD3006825F0 /* NetworkModel.swift in Sources */,
-				A1886C352907E66F006825F0 /* ReceiveViewController.swift in Sources */,
+				A1886C8E2909481B006825F0 /* DerivablePath.swift in Sources */,
+				A1886C83290857FF006825F0 /* PublicKey.swift in Sources */,
+				A1886C9029094B39006825F0 /* Ed25519HDKey.swift in Sources */,
+				A1886C89290857FF006825F0 /* Base58.swift in Sources */,
+				A1886C86290857FF006825F0 /* PBKDF2.swift in Sources */,
+				A1886C9E29094DCC006825F0 /* Array + CryptoSwift.swift in Sources */,
+				A1886C7929085780006825F0 /* ReceiveViewController.swift in Sources */,
+				A1886C85290857FF006825F0 /* NetworkModel.swift in Sources */,
+				A1886C9C29094D1B006825F0 /* String + CryptoSwift.swift in Sources */,
 				A1886C312907E66F006825F0 /* AppDelegate.swift in Sources */,
-				A1886C612907FA0D006825F0 /* SendViewController.swift in Sources */,
+				A1886C8A290857FF006825F0 /* SolanaError.swift in Sources */,
+				A1886C9229094BC1006825F0 /* HMAC.swift in Sources */,
+				A1886C84290857FF006825F0 /* Mnemonic.swift in Sources */,
+				A1886C88290857FF006825F0 /* SolanaAccount.swift in Sources */,
+				A1886C7A29085780006825F0 /* SendViewController.swift in Sources */,
+				A1886C9729094CE8006825F0 /* Data + CryptoSwift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
