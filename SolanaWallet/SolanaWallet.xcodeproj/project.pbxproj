@@ -30,6 +30,8 @@
 		A1886C9C29094D1B006825F0 /* String + CryptoSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C9B29094D1B006825F0 /* String + CryptoSwift.swift */; };
 		A1886C9E29094DCC006825F0 /* Array + CryptoSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C9D29094DCC006825F0 /* Array + CryptoSwift.swift */; };
 		A1886CA0290954AE006825F0 /* ReceiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C9F290954AE006825F0 /* ReceiveViewModel.swift */; };
+		A1886CA22909991F006825F0 /* SolanaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CA12909991F006825F0 /* SolanaError.swift */; };
+		A1886CA429099962006825F0 /* Base58.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CA329099962006825F0 /* Base58.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,8 @@
 		A1886C9B29094D1B006825F0 /* String + CryptoSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + CryptoSwift.swift"; sourceTree = "<group>"; };
 		A1886C9D29094DCC006825F0 /* Array + CryptoSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + CryptoSwift.swift"; sourceTree = "<group>"; };
 		A1886C9F290954AE006825F0 /* ReceiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewModel.swift; sourceTree = "<group>"; };
+		A1886CA12909991F006825F0 /* SolanaError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolanaError.swift; sourceTree = "<group>"; };
+		A1886CA329099962006825F0 /* Base58.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base58.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,8 @@
 				A1886C8D2909481B006825F0 /* DerivablePath.swift */,
 				A1886C8F29094B39006825F0 /* Ed25519HDKey.swift */,
 				A1886C9129094BC1006825F0 /* HMAC.swift */,
+				A1886CA12909991F006825F0 /* SolanaError.swift */,
+				A1886CA329099962006825F0 /* Base58.swift */,
 			);
 			path = SolanaAccount;
 			sourceTree = "<group>";
@@ -333,11 +339,13 @@
 				A1886C9029094B39006825F0 /* Ed25519HDKey.swift in Sources */,
 				A1886C89290857FF006825F0 /* Base58.swift in Sources */,
 				A1886C86290857FF006825F0 /* PBKDF2.swift in Sources */,
+				A1886CA429099962006825F0 /* Base58.swift in Sources */,
 				A1886C9E29094DCC006825F0 /* Array + CryptoSwift.swift in Sources */,
 				A1886C7929085780006825F0 /* ReceiveViewController.swift in Sources */,
 				A1886C85290857FF006825F0 /* NetworkModel.swift in Sources */,
 				A1886C9C29094D1B006825F0 /* String + CryptoSwift.swift in Sources */,
 				A1886C312907E66F006825F0 /* AppDelegate.swift in Sources */,
+				A1886CA22909991F006825F0 /* SolanaError.swift in Sources */,
 				A1886C8A290857FF006825F0 /* SolanaError.swift in Sources */,
 				A1886C9229094BC1006825F0 /* HMAC.swift in Sources */,
 				A1886C84290857FF006825F0 /* Mnemonic.swift in Sources */,
