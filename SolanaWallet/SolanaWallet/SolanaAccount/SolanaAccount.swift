@@ -25,7 +25,7 @@ public struct SolanaAccount: Codable, Hashable {
     ///   - phrase: secret phrase for an account, leave it empty for new account
     ///   - network: network in which account should be created
     /// - Throws: Error if the derivation is not successful
-    public init(phrase: [String] = [], network: NetworkModel, derivablePath: DerivablePath? = nil) async throws {
+    public init(phrase: [String] = [], network: NetworkModel) async throws {
         self = try await Task {
             let mnemonic: Mnemonic
             var phrase = phrase.filter { !$0.isEmpty }
@@ -33,16 +33,14 @@ public struct SolanaAccount: Codable, Hashable {
             mnemonic = Mnemonic()
             phrase = mnemonic.phrase
             
-            var derivablePath = derivablePath
-            if derivablePath == nil {
-                if phrase.count == 12 {
-                    derivablePath = .init(type: .deprecated, walletIndex: 0, accountIndex: 0)
-                } else {
-                    derivablePath = .default
-                }
+            let derivablePath: DerivablePath
+            if phrase.count == 12 {
+                derivablePath = .init(type: .deprecated, walletIndex: 0, accountIndex: 0)
+            } else {
+                derivablePath = .default
             }
 
-            let keys = try Ed25519HDKey.derivePath(derivablePath!.rawValue, seed: mnemonic.seed.toHexString()).get()
+            let keys = try Ed25519HDKey.derivePath(derivablePath.rawValue, seed: mnemonic.seed.toHexString()).get()
             let keyPair = try NaclSign.KeyPair.keyPair(fromSeed: keys.key)
             let publicKey: PublicKey = try PublicKey(data: keyPair.publicKey)
 

@@ -6,6 +6,18 @@ final class ReceiveViewController: UIViewController {
         enum Layout {
             static let stackViewInsets = 16.0
         }
+        
+        enum Font {
+            static let balanceFont = UIFont.systemFont(
+                ofSize: 22,
+                weight: UIFont.Weight.bold
+            )
+            
+            static let addressFont = UIFont.systemFont(
+                ofSize: 12,
+                weight: UIFont.Weight.regular
+            )
+        }
     }
     
     private let indicatorView: UIActivityIndicatorView = {
@@ -16,10 +28,7 @@ final class ReceiveViewController: UIViewController {
     
     private let balanceDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(
-            ofSize: 22,
-            weight: UIFont.Weight.bold
-        )
+        label.font = Static.Font.balanceFont
         label.text = "Balance"
         
         return label
@@ -27,10 +36,7 @@ final class ReceiveViewController: UIViewController {
     
     private let balanceLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(
-            ofSize: 22,
-            weight: UIFont.Weight.regular
-        )
+        label.font = Static.Font.balanceFont
         return label
     }()
     
@@ -46,10 +52,7 @@ final class ReceiveViewController: UIViewController {
     
     private let addressLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(
-            ofSize: 14,
-            weight: UIFont.Weight.regular
-        )
+        label.font = Static.Font.addressFont
         label.textAlignment = .center
         
         return label
@@ -82,14 +85,20 @@ final class ReceiveViewController: UIViewController {
         view.backgroundColor = .white
         
         setupUI()
-        balanceLabel.text = "1000"
-        addressLabel.text = "1xfdfafjeojo3409jlx09j0j3lkjdasjfasdlf"
+        balanceLabel.text = "???"
+        addressLabel.text = "Generating"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         startLoading()
-        viewModel.createNewAccount { [weak self] newAccount in
+        viewModel.createNewAccount { [weak self] result in
             DispatchQueue.main.async {
+                switch result {
+                case .success(let account):
+                    self?.addressLabel.text = account.publicKey.base58EncodedString
+                case .failure(let error):
+                    print("Error \(error)")
+                }
                 self?.stopLoading()
             }
         }
