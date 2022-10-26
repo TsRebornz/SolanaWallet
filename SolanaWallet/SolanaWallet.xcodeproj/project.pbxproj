@@ -29,6 +29,7 @@
 		A1886C9729094CE8006825F0 /* Data + CryptoSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C9629094CE8006825F0 /* Data + CryptoSwift.swift */; };
 		A1886C9C29094D1B006825F0 /* String + CryptoSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C9B29094D1B006825F0 /* String + CryptoSwift.swift */; };
 		A1886C9E29094DCC006825F0 /* Array + CryptoSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C9D29094DCC006825F0 /* Array + CryptoSwift.swift */; };
+		A1886CA0290954AE006825F0 /* ReceiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C9F290954AE006825F0 /* ReceiveViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		A1886C9629094CE8006825F0 /* Data + CryptoSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data + CryptoSwift.swift"; sourceTree = "<group>"; };
 		A1886C9B29094D1B006825F0 /* String + CryptoSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + CryptoSwift.swift"; sourceTree = "<group>"; };
 		A1886C9D29094DCC006825F0 /* Array + CryptoSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + CryptoSwift.swift"; sourceTree = "<group>"; };
+		A1886C9F290954AE006825F0 /* ReceiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				A1886C7729085780006825F0 /* ReceiveViewController.swift */,
+				A1886C9F290954AE006825F0 /* ReceiveViewModel.swift */,
 				A1886C7829085780006825F0 /* SendViewController.swift */,
 			);
 			path = UILayer;
@@ -339,6 +342,7 @@
 				A1886C9229094BC1006825F0 /* HMAC.swift in Sources */,
 				A1886C84290857FF006825F0 /* Mnemonic.swift in Sources */,
 				A1886C88290857FF006825F0 /* SolanaAccount.swift in Sources */,
+				A1886CA0290954AE006825F0 /* ReceiveViewModel.swift in Sources */,
 				A1886C7A29085780006825F0 /* SendViewController.swift in Sources */,
 				A1886C9729094CE8006825F0 /* Data + CryptoSwift.swift in Sources */,
 			);

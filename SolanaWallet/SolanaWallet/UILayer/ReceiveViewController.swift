@@ -8,6 +8,12 @@ final class ReceiveViewController: UIViewController {
         }
     }
     
+    private let indicatorView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .large)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private let balanceDescriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(
@@ -66,6 +72,8 @@ final class ReceiveViewController: UIViewController {
         return stackView
     }()
     
+    var viewModel: ReceiveViewModel!
+    
     // MARK: - View life cycle
     
     override func viewDidLoad() {
@@ -76,12 +84,29 @@ final class ReceiveViewController: UIViewController {
         setupUI()
         balanceLabel.text = "1000"
         addressLabel.text = "1xfdfafjeojo3409jlx09j0j3lkjdasjfasdlf"
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        startLoading()
+        viewModel.createNewAccount { [weak self] newAccount in
+            DispatchQueue.main.async {
+                self?.stopLoading()
+            }
+        }
     }
     
     // MARK: - Private
     
     private func setupUI() {
+        
+        //MARK
+        
+        view.addSubview(indicatorView)
+        
+        NSLayoutConstraint.activate([
+            indicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            indicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
         
         // Balance
         view.addSubview(balanceStackView)
@@ -116,6 +141,14 @@ final class ReceiveViewController: UIViewController {
     @objc
     private func copyAddressButtonTapped() {
         UIPasteboard.general.string = addressLabel.text
+    }
+    
+    private func startLoading() {
+        indicatorView.startAnimating()
+    }
+    
+    private func stopLoading() {
+        indicatorView.stopAnimating()
     }
 
 }

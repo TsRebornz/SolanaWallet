@@ -28,7 +28,8 @@ enum UIBuilder {
     static func buildTabBarController() -> UIViewController {
         
         let tabBarController = UITabBarController()
-        let receiveViewController = ReceiveViewController()
+        
+        let receiveViewController = Self.buildReceiveViewController()
         receiveViewController.tabBarItem = UITabBarItem()
         receiveViewController.tabBarItem.title = "Recieve"
         receiveViewController.tabBarItem.image = UIImage(systemName: "arrow.down.forward.and.arrow.up.backward")
@@ -40,6 +41,13 @@ enum UIBuilder {
         let viewControllers = [receiveViewController, sendViewController]
         tabBarController.setViewControllers(viewControllers, animated: false)
         return tabBarController
+    }
+    
+    static func buildReceiveViewController() -> ReceiveViewController {
+        let receiveViewController = ReceiveViewController()
+        let viewModel = ReceiveViewModel()
+        receiveViewController.viewModel = viewModel
+        return receiveViewController
     }
 }
 
