@@ -93,7 +93,6 @@ final class ReceiveViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         startLoading()
         viewModel.createNewAccount { [weak self, viewModel] result in
-            
             DispatchQueue.main.async {
                 switch result {
                 case .success(let account):
@@ -101,16 +100,17 @@ final class ReceiveViewController: UIViewController {
                 case .failure(let error):
                     print("Error \(error)")
                 }
-                
             }
             try? viewModel?.getBalance { result in
-                switch result {
-                case .success(let balance):
-                    self?.balanceLabel.text = "\(balance)"
-                case .failure(let error):
-                    print("Error \(error)")
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let balance):
+                        self?.balanceLabel.text = "\(balance)"
+                    case .failure(let error):
+                        print("Error \(error)")
+                    }
+                    self?.stopLoading()
                 }
-                self?.stopLoading()
             }
         }
     }
