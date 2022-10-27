@@ -32,6 +32,14 @@
 		A1886CA0290954AE006825F0 /* ReceiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886C9F290954AE006825F0 /* ReceiveViewModel.swift */; };
 		A1886CA22909991F006825F0 /* SolanaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CA12909991F006825F0 /* SolanaError.swift */; };
 		A1886CA429099962006825F0 /* Base58.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CA329099962006825F0 /* Base58.swift */; };
+		A1886CA72909A22E006825F0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CA62909A22E006825F0 /* NetworkManager.swift */; };
+		A1886CA92909A2CF006825F0 /* URLConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CA82909A2CF006825F0 /* URLConvertable.swift */; };
+		A1886CAB2909A303006825F0 /* SolanaApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CAA2909A303006825F0 /* SolanaApiRequest.swift */; };
+		A1886CAD2909A714006825F0 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CAC2909A714006825F0 /* ApiRequest.swift */; };
+		A1886CAF2909A75D006825F0 /* RequestModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CAE2909A75D006825F0 /* RequestModels.swift */; };
+		A1886CB12909B0C4006825F0 /* AnyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CB02909B0C4006825F0 /* AnyCodable.swift */; };
+		A1886CB3290A7BB5006825F0 /* Rpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CB2290A7BB5006825F0 /* Rpc.swift */; };
+		A1886CB5290A7C14006825F0 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CB4290A7C13006825F0 /* Context.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +88,14 @@
 		A1886C9F290954AE006825F0 /* ReceiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewModel.swift; sourceTree = "<group>"; };
 		A1886CA12909991F006825F0 /* SolanaError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolanaError.swift; sourceTree = "<group>"; };
 		A1886CA329099962006825F0 /* Base58.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base58.swift; sourceTree = "<group>"; };
+		A1886CA62909A22E006825F0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		A1886CA82909A2CF006825F0 /* URLConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConvertable.swift; sourceTree = "<group>"; };
+		A1886CAA2909A303006825F0 /* SolanaApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolanaApiRequest.swift; sourceTree = "<group>"; };
+		A1886CAC2909A714006825F0 /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
+		A1886CAE2909A75D006825F0 /* RequestModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModels.swift; sourceTree = "<group>"; };
+		A1886CB02909B0C4006825F0 /* AnyCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCodable.swift; sourceTree = "<group>"; };
+		A1886CB2290A7BB5006825F0 /* Rpc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rpc.swift; sourceTree = "<group>"; };
+		A1886CB4290A7C13006825F0 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +147,7 @@
 		A1886C2F2907E66F006825F0 /* SolanaWallet */ = {
 			isa = PBXGroup;
 			children = (
+				A1886CA52909A223006825F0 /* NetworkLayer */,
 				A1886C7629085780006825F0 /* UILayer */,
 				A1886C7529085756006825F0 /* SolanaAccount */,
 				A1886C302907E66F006825F0 /* AppDelegate.swift */,
@@ -196,6 +213,21 @@
 				A1886C9D29094DCC006825F0 /* Array + CryptoSwift.swift */,
 			);
 			path = CryptoSwift;
+			sourceTree = "<group>";
+		};
+		A1886CA52909A223006825F0 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				A1886CA62909A22E006825F0 /* NetworkManager.swift */,
+				A1886CA82909A2CF006825F0 /* URLConvertable.swift */,
+				A1886CAA2909A303006825F0 /* SolanaApiRequest.swift */,
+				A1886CAC2909A714006825F0 /* ApiRequest.swift */,
+				A1886CAE2909A75D006825F0 /* RequestModels.swift */,
+				A1886CB02909B0C4006825F0 /* AnyCodable.swift */,
+				A1886CB2290A7BB5006825F0 /* Rpc.swift */,
+				A1886CB4290A7C13006825F0 /* Context.swift */,
+			);
+			path = NetworkLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,14 +376,22 @@
 				A1886C7929085780006825F0 /* ReceiveViewController.swift in Sources */,
 				A1886C85290857FF006825F0 /* NetworkModel.swift in Sources */,
 				A1886C9C29094D1B006825F0 /* String + CryptoSwift.swift in Sources */,
+				A1886CAD2909A714006825F0 /* ApiRequest.swift in Sources */,
 				A1886C312907E66F006825F0 /* AppDelegate.swift in Sources */,
 				A1886CA22909991F006825F0 /* SolanaError.swift in Sources */,
+				A1886CA72909A22E006825F0 /* NetworkManager.swift in Sources */,
 				A1886C8A290857FF006825F0 /* SolanaError.swift in Sources */,
+				A1886CB5290A7C14006825F0 /* Context.swift in Sources */,
 				A1886C9229094BC1006825F0 /* HMAC.swift in Sources */,
 				A1886C84290857FF006825F0 /* Mnemonic.swift in Sources */,
+				A1886CB12909B0C4006825F0 /* AnyCodable.swift in Sources */,
+				A1886CAB2909A303006825F0 /* SolanaApiRequest.swift in Sources */,
+				A1886CB3290A7BB5006825F0 /* Rpc.swift in Sources */,
 				A1886C88290857FF006825F0 /* SolanaAccount.swift in Sources */,
+				A1886CAF2909A75D006825F0 /* RequestModels.swift in Sources */,
 				A1886CA0290954AE006825F0 /* ReceiveViewModel.swift in Sources */,
 				A1886C7A29085780006825F0 /* SendViewController.swift in Sources */,
+				A1886CA92909A2CF006825F0 /* URLConvertable.swift in Sources */,
 				A1886C9729094CE8006825F0 /* Data + CryptoSwift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
