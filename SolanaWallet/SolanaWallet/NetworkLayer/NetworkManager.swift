@@ -1,7 +1,7 @@
 import Foundation
 
 protocol NetworkManagerProtocol {
-    func getBalance(publicKeyBase58: String, completionHandler: (Result<Data, Error>) -> Void)
+    func getBalance(publicKeyBase58: String, completionHandler: @escaping (Result<Int, Error>) -> Void)
 }
 
 final class NetworkManager {
@@ -15,7 +15,7 @@ final class NetworkManager {
 
 extension NetworkManager: NetworkManagerProtocol {
     
-    func getBalance(publicKeyBase58: String, completionHandler: (Result<Data, Error>) -> Void) {
+    func getBalance(publicKeyBase58: String, completionHandler: @escaping (Result<Int, Error>) -> Void) {
         guard let getBalanceRequest = SolanaApiRequest.balance(publicKeyBase58: publicKeyBase58).urlRequest else {
             completionHandler(.failure(SolanaError.unknown))
             return
@@ -24,10 +24,24 @@ extension NetworkManager: NetworkManagerProtocol {
         baseNetwork.makeRequest(request: getBalanceRequest) { result in
             switch result {
             case .failure(let error):
-                print("Error \(error)")
+                completionHandler(.failure(error))
             case .success(let data, let response):
-                // FIXME: - Parse response here
-                print("data is \(data)")
+                
+                //
+                
+                guard let jsonObject = try? JSONSerialization.jsonObject(with: data) else {
+                    Swift.print("Response body \n Data \(data)")
+                    return
+                }
+                Swift.print("Body \n Json \(jsonObject)")
+                                
+                let response: JSONRPCResponse<Rpc<UInt64>>? = try? JSONRPCResponseDecoder().decode(with: data)
+                guard let balance = response?.result?.value else {
+                    // FIXME: - Change to proper error
+                    completionHandler(.failure(SolanaError.unknown))
+                    return
+                }
+                completionHandler(.success(Int(balance)))
             }
         }
     }

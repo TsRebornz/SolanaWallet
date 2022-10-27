@@ -75,6 +75,7 @@ final class ReceiveViewController: UIViewController {
         return stackView
     }()
     
+    // TODO: - Remove force unwrap in future
     var viewModel: ReceiveViewModel!
     
     // MARK: - View life cycle
@@ -91,11 +92,21 @@ final class ReceiveViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         startLoading()
-        viewModel.createNewAccount { [weak self] result in
+        viewModel.createNewAccount { [weak self, viewModel] result in
+            
             DispatchQueue.main.async {
                 switch result {
                 case .success(let account):
                     self?.addressLabel.text = account.publicKey.base58EncodedString
+                case .failure(let error):
+                    print("Error \(error)")
+                }
+                
+            }
+            try? viewModel?.getBalance { result in
+                switch result {
+                case .success(let balance):
+                    self?.balanceLabel.text = "\(balance)"
                 case .failure(let error):
                     print("Error \(error)")
                 }

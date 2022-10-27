@@ -40,6 +40,8 @@
 		A1886CB12909B0C4006825F0 /* AnyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CB02909B0C4006825F0 /* AnyCodable.swift */; };
 		A1886CB3290A7BB5006825F0 /* Rpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CB2290A7BB5006825F0 /* Rpc.swift */; };
 		A1886CB5290A7C14006825F0 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CB4290A7C13006825F0 /* Context.swift */; };
+		A1886CB7290AF4DC006825F0 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CB6290AF4DC006825F0 /* ApiResponse.swift */; };
+		A1886CB9290AF4FA006825F0 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CB8290AF4FA006825F0 /* ResponseError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,8 @@
 		A1886CB02909B0C4006825F0 /* AnyCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCodable.swift; sourceTree = "<group>"; };
 		A1886CB2290A7BB5006825F0 /* Rpc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rpc.swift; sourceTree = "<group>"; };
 		A1886CB4290A7C13006825F0 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		A1886CB6290AF4DC006825F0 /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
+		A1886CB8290AF4FA006825F0 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +230,8 @@
 				A1886CB02909B0C4006825F0 /* AnyCodable.swift */,
 				A1886CB2290A7BB5006825F0 /* Rpc.swift */,
 				A1886CB4290A7C13006825F0 /* Context.swift */,
+				A1886CB6290AF4DC006825F0 /* ApiResponse.swift */,
+				A1886CB8290AF4FA006825F0 /* ResponseError.swift */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";
@@ -382,7 +388,9 @@
 				A1886CA72909A22E006825F0 /* NetworkManager.swift in Sources */,
 				A1886C8A290857FF006825F0 /* SolanaError.swift in Sources */,
 				A1886CB5290A7C14006825F0 /* Context.swift in Sources */,
+				A1886CB9290AF4FA006825F0 /* ResponseError.swift in Sources */,
 				A1886C9229094BC1006825F0 /* HMAC.swift in Sources */,
+				A1886CB7290AF4DC006825F0 /* ApiResponse.swift in Sources */,
 				A1886C84290857FF006825F0 /* Mnemonic.swift in Sources */,
 				A1886CB12909B0C4006825F0 /* AnyCodable.swift in Sources */,
 				A1886CAB2909A303006825F0 /* SolanaApiRequest.swift in Sources */,

@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UIBuilder.buildTabBarController()
+        window?.rootViewController = Builder.buildTabBarController()
         window?.makeKeyAndVisible()
         
         return true
@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-enum UIBuilder {
+enum Builder {
     static func buildTabBarController() -> UIViewController {
         
         let tabBarController = UITabBarController()
@@ -45,9 +45,16 @@ enum UIBuilder {
     
     static func buildReceiveViewController() -> ReceiveViewController {
         let receiveViewController = ReceiveViewController()
-        let viewModel = ReceiveViewModel()
+        let urlSession = buildURLSession()
+        let baseNetowork = BaseNetworkManager(networkSession: urlSession)
+        let networkManager = NetworkManager(network: baseNetowork)
+        let viewModel = ReceiveViewModel(networkManager: networkManager)
         receiveViewController.viewModel = viewModel
         return receiveViewController
+    }
+    
+    static func buildURLSession() -> URLSession {
+        return URLSession.shared
     }
 }
 
