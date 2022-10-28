@@ -26,15 +26,6 @@ extension NetworkManager: NetworkManagerProtocol {
             case .failure(let error):
                 completionHandler(.failure(error))
             case .success(let data, let response):
-                
-                //
-                
-                guard let jsonObject = try? JSONSerialization.jsonObject(with: data) else {
-                    Swift.print("Response body \n Data \(data)")
-                    return
-                }
-                Swift.print("Body \n Json \(jsonObject)")
-                                
                 let response: JSONRPCResponse<Rpc<UInt64>>? = try? JSONRPCResponseDecoder().decode(with: data)
                 guard let balance = response?.result?.value else {
                     // FIXME: - Change to proper error
@@ -42,6 +33,34 @@ extension NetworkManager: NetworkManagerProtocol {
                     return
                 }
                 completionHandler(.success(Int(balance)))
+            }
+        }
+    }
+    
+    func sendTransaction(transactionString: String, completionHandler: @escaping (Result<String, Error>) -> Void) {
+        guard let sendTransactionRequest = SolanaApiRequest.transaction(stringTransaction: transactionString) .urlRequest else {
+            completionHandler(.failure(SolanaError.unknown))
+            return
+        }
+        
+        baseNetwork.makeRequest(request: sendTransactionRequest) { result in
+            switch result {
+            case .failure(let error):
+                completionHandler(.failure(error))
+            case .success(let data, let response):
+                let response: JSONRPCResponse<String>? = try? JSONRPCResponseDecoder().decode(with: data)
+                guard let jsonObject = try? JSONSerialization.jsonObject(with: data) else {
+                    Swift.print("Response body \n Data \(data)")
+                    return
+                }
+                Swift.print("Body \n Json \(jsonObject)")
+                
+                guard let transactionID = response?.result else {
+                    // FIXME: - Change to proper error
+                    completionHandler(.failure(SolanaError.unknown))
+                    return
+                }
+                completionHandler(.success(transactionID))
             }
         }
     }
