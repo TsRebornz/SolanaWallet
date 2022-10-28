@@ -25,7 +25,7 @@ extension NetworkManager: NetworkManagerProtocol {
             switch result {
             case .failure(let error):
                 completionHandler(.failure(error))
-            case .success(let data, let response):
+            case .success(let data, let _):
                 let response: JSONRPCResponse<Rpc<UInt64>>? = try? JSONRPCResponseDecoder().decode(with: data)
                 guard let balance = response?.result?.value else {
                     // FIXME: - Change to proper error
@@ -38,7 +38,8 @@ extension NetworkManager: NetworkManagerProtocol {
     }
     
     func sendTransaction(transactionString: String, completionHandler: @escaping (Result<String, Error>) -> Void) {
-        guard let sendTransactionRequest = SolanaApiRequest.transaction(stringTransaction: transactionString) .urlRequest else {
+        guard let sendTransactionRequest = SolanaApiRequest.transaction(stringTransaction: transactionString).urlRequest
+        else {
             completionHandler(.failure(SolanaError.unknown))
             return
         }
@@ -47,7 +48,7 @@ extension NetworkManager: NetworkManagerProtocol {
             switch result {
             case .failure(let error):
                 completionHandler(.failure(error))
-            case .success(let data, let response):
+            case .success(let data, let _):
                 let response: JSONRPCResponse<String>? = try? JSONRPCResponseDecoder().decode(with: data)
                 guard let jsonObject = try? JSONSerialization.jsonObject(with: data) else {
                     Swift.print("Response body \n Data \(data)")
@@ -64,6 +65,88 @@ extension NetworkManager: NetworkManagerProtocol {
             }
         }
     }
+    
+    func recentBlockHash(completionHandler: @escaping (Result<Fee, Error>) -> Void) {
+        guard let recentBlockHashRequest = SolanaApiRequest.recentBlockHash.urlRequest
+        else {
+            completionHandler(.failure(SolanaError.unknown))
+            return
+        }
+        
+        baseNetwork.makeRequest(request: recentBlockHashRequest) { result in
+            switch result {
+            case .failure(let error):
+                completionHandler(.failure(error))
+            case .success(let data, let _):
+                let response: JSONRPCResponse<Fee>? = try? JSONRPCResponseDecoder().decode(with: data)
+                guard let jsonObject = try? JSONSerialization.jsonObject(with: data) else {
+                    Swift.print("Response body \n Data \(data)")
+                    return
+                }
+                Swift.print("Body \n Json \(jsonObject)")
+                
+                guard let fee = response?.result else {
+                    // FIXME: - Change to proper error
+                    completionHandler(.failure(SolanaError.unknown))
+                    return
+                }
+                completionHandler(.success(fee))
+            }
+        }
+    }
+    
+    /*
+         /// Send preparedTransaction
+         /// - Parameter preparedTransaction: preparedTransaction to be sent
+         /// - Returns: Transaction signature
+         func sendTransaction(
+             preparedTransaction: PreparedTransaction
+         ) async throws -> String {
+             try await Task.retrying(
+                 where: { $0.isBlockhashNotFoundError },
+                 maxRetryCount: 3,
+                 retryDelay: 1,
+                 timeoutInSeconds: 60
+             ) {
+                 let recentBlockhash = try await self.apiClient.getRecentBlockhash()
+                 let serializedTransaction = try self.signAndSerialize(
+                     preparedTransaction: preparedTransaction,
+                     recentBlockhash: recentBlockhash
+                 )
+                 return try await self.apiClient.sendTransaction(
+                     transaction: serializedTransaction,
+                     configs: RequestConfiguration(encoding: "base64")!
+                 )
+             }
+             .value
+         }
+     
+     
+         /// Simulate transaction (for testing purpose)
+         /// - Parameter preparedTransaction: preparedTransaction to be simulated
+         /// - Returns: The result of Simulation
+         func simulateTransaction(
+             preparedTransaction: PreparedTransaction
+         ) async throws -> SimulationResult {
+             try await Task.retrying(
+                 where: { $0.isBlockhashNotFoundError },
+                 maxRetryCount: 3,
+                 retryDelay: 1,
+                 timeoutInSeconds: 60
+             ) {
+                 let recentBlockhash = try await self.apiClient.getRecentBlockhash()
+                 let serializedTransaction = try self.signAndSerialize(
+                     preparedTransaction: preparedTransaction,
+                     recentBlockhash: recentBlockhash
+                 )
+                 return try await self.apiClient.simulateTransaction(
+                     transaction: serializedTransaction,
+                     configs: RequestConfiguration(encoding: "base64")!
+                 )
+             }
+             .value
+         }
+     */
 }
 
 final class BaseNetworkManager {

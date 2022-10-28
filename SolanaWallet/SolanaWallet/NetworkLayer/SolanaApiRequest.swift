@@ -6,6 +6,7 @@ enum SolanaApiRequest: URLConvertable {
    
     case balance(publicKeyBase58: String)
     case transaction(stringTransaction: String)
+    case recentBlockHash
     
     var headers: [String] {
         return []
@@ -30,6 +31,11 @@ enum SolanaApiRequest: URLConvertable {
                 method: self.jsonRPCMehtodName,
                 params: [stringTransaction]
             )
+        case .recentBlockHash:
+            jSONRPCAPIClientRequest = JSONRPCAPIClientRequest(
+                method: self.jsonRPCMehtodName,
+                params: []
+            )
         }
         
         return try? jsonEncoder.encode(jSONRPCAPIClientRequest)
@@ -41,6 +47,8 @@ enum SolanaApiRequest: URLConvertable {
             return "getBalance"
         case .transaction:
             return "sendTransaction"
+        case .recentBlockHash:
+            return "getRecentBlockhash"
         }
     }
     
