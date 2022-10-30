@@ -20,6 +20,15 @@ final class ReceiveViewController: UIViewController {
         }
     }
     
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        let refreshControll = UIRefreshControl()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        refreshControll.addTarget(self, action: #selector(indicatorPulled), for: .valueChanged)
+        scrollView.refreshControl = refreshControll
+        return scrollView
+    }()
+    
     private let indicatorView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(style: .large)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -101,17 +110,7 @@ final class ReceiveViewController: UIViewController {
                     print("Error \(error)")
                 }
             }
-            try? viewModel?.getBalance { result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let balance):
-                        self?.balanceLabel.text = "\(balance)"
-                    case .failure(let error):
-                        print("Error \(error)")
-                    }
-                    self?.stopLoading()
-                }
-            }
+            self?.updateBalance()
         }
     }
     
@@ -119,43 +118,69 @@ final class ReceiveViewController: UIViewController {
     
     private func setupUI() {
         
-        //MARK
+        // Scroll view
         
-        view.addSubview(indicatorView)
+        view.addSubview(scrollView)
         
         NSLayoutConstraint.activate([
-            indicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            indicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        // Indicator view
+        
+        scrollView.addSubview(indicatorView)
+        
+        NSLayoutConstraint.activate([
+            indicatorView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor),
+            indicatorView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
         ])
         
         // Balance
-        view.addSubview(balanceStackView)
+        scrollView.addSubview(balanceStackView)
         
         NSLayoutConstraint.activate([
             balanceStackView.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,
+                equalTo: scrollView.leadingAnchor,
                 constant: Static.Layout.stackViewInsets
             ),
             balanceStackView.topAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.topAnchor,
+                equalTo: scrollView.safeAreaLayoutGuide.topAnchor,
                 constant: Static.Layout.stackViewInsets
             ),
             balanceStackView.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,
+                equalTo: scrollView.trailingAnchor,
                 constant: -Static.Layout.stackViewInsets
             )
         ])
         
         // Address
         
-        view.addSubview(addressStackView)
+        scrollView.addSubview(addressStackView)
         
         NSLayoutConstraint.activate([
-            addressStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Static.Layout.stackViewInsets),
-            addressStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Static.Layout.stackViewInsets),
-            addressStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            addressStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: Static.Layout.stackViewInsets),
+            addressStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -Static.Layout.stackViewInsets),
+            addressStackView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor)
         ])
         
+    }
+    
+    private func updateBalance() {
+        startLoading()
+        try? viewModel?.getBalance { result in
+            DispatchQueue.main.async { [weak self] in
+                switch result {
+                case .success(let balance):
+                    self?.balanceLabel.text = "\(balance)"
+                case .failure(let error):
+                    print("Error \(error)")
+                }
+                self?.stopLoading()
+            }
+        }
     }
     
     @objc
@@ -163,12 +188,22 @@ final class ReceiveViewController: UIViewController {
         UIPasteboard.general.string = addressLabel.text
     }
     
+    @objc
+    private func indicatorPulled() {
+        updateBalance()
+    }
+    
     private func startLoading() {
-        indicatorView.startAnimating()
+        DispatchQueue.main.async { [weak self] in
+            self?.indicatorView.startAnimating()
+        }
+        
     }
     
     private func stopLoading() {
-        indicatorView.stopAnimating()
+        DispatchQueue.main.async { [weak self] in
+            self?.indicatorView.stopAnimating()
+        }
     }
 
 }
