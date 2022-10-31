@@ -99,9 +99,7 @@ final class ReceiveViewController: UIViewController {
         setupUI()
         balanceLabel.text = "???"
         addressLabel.text = "Generating"
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        
         startLoading()
         viewModel.createNewAccount { [weak self, viewModel] result in
             DispatchQueue.main.async {
