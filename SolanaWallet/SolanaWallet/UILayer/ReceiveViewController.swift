@@ -87,8 +87,16 @@ final class ReceiveViewController: UIViewController {
         return stackView
     }()
     
-    // TODO: - Remove force unwrap in future
-    var viewModel: ReceiveViewModel!
+    private let viewModel: ReceiveViewModel
+    
+    init(viewModel: ReceiveViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - View life cycle
     
@@ -102,7 +110,7 @@ final class ReceiveViewController: UIViewController {
         addressLabel.text = "Generating"
         
         startLoading()
-        viewModel.createNewAccount { [weak self, viewModel] result in
+        viewModel.createNewAccount { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let account):
@@ -177,7 +185,7 @@ final class ReceiveViewController: UIViewController {
         if useIndicator {
             startLoading()
         }
-        try? viewModel?.getBalance { result in
+        try? viewModel.getBalance { result in
             DispatchQueue.main.async { [weak self] in
                 switch result {
                 case .success(let balance):

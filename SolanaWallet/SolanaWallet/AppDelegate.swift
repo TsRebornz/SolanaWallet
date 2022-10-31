@@ -34,7 +34,7 @@ enum Builder {
         receiveViewController.tabBarItem.title = "Recieve"
         receiveViewController.tabBarItem.image = UIImage(systemName: "arrow.down.forward.and.arrow.up.backward")
         
-        let sendViewController = SendViewController()
+        let sendViewController = Self.buildSendViewController()
         sendViewController.tabBarItem = UITabBarItem()
         sendViewController.tabBarItem.title = "Send"
         sendViewController.tabBarItem.image = UIImage(systemName: "arrow.up.left.and.arrow.down.right")
@@ -44,14 +44,26 @@ enum Builder {
     }
     
     static func buildReceiveViewController() -> ReceiveViewController {
-        let receiveViewController = ReceiveViewController()
+        let currentUserData = UserData.current
+        let networkManager = buildNetworkManager()
+        let viewModel = ReceiveViewModel(networkManager: networkManager, state: currentUserData)
+        let receiveViewController = ReceiveViewController(viewModel: viewModel)
+        return receiveViewController
+    }
+    
+    static func buildSendViewController() -> SendViewController {
+        let networkManager = buildNetworkManager()
+        let blockChainClient = BlockchainClient(apiClient: networkManager)
+        let userData = UserData.current
+        let sendViewModel = SendViewModel(client: blockChainClient, state: userData)
+        let sendViewController = SendViewController(viewModel: sendViewModel)
+        return sendViewController
+    }
+    
+    static func buildNetworkManager() -> NetworkManager {
         let urlSession = buildURLSession()
         let baseNetowork = BaseNetworkManager(networkSession: urlSession)
-        let networkManager = NetworkManager(network: baseNetowork)
-        let currentUserData = UserData.current
-        let viewModel = ReceiveViewModel(networkManager: networkManager, state: currentUserData)
-        receiveViewController.viewModel = viewModel
-        return receiveViewController
+        return NetworkManager(network: baseNetowork)
     }
     
     static func buildURLSession() -> URLSession {
