@@ -26,6 +26,7 @@ final class ReceiveViewController: UIViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         refreshControll.addTarget(self, action: #selector(indicatorPulled), for: .valueChanged)
         scrollView.refreshControl = refreshControll
+        scrollView.contentSize = UIScreen.main.bounds.size
         return scrollView
     }()
     
