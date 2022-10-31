@@ -9,12 +9,12 @@ final class SendViewController: UIViewController {
         }
         
         enum Font {
-            static let sendAddressDescriptionFont = UIFont.systemFont(
+            static let labelDescriptionFont = UIFont.systemFont(
                 ofSize: 14,
                 weight: UIFont.Weight.bold
             )
             
-            static let sendAddressFont = UIFont.systemFont(
+            static let textfieldFont = UIFont.systemFont(
                 ofSize: 14,
                 weight: UIFont.Weight.regular
             )
@@ -23,7 +23,7 @@ final class SendViewController: UIViewController {
     
     private let sendAddressDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = Static.Font.sendAddressDescriptionFont
+        label.font = Static.Font.labelDescriptionFont
         label.textAlignment = .center
         label.text = "Address to send"
         return label
@@ -31,9 +31,27 @@ final class SendViewController: UIViewController {
     
     private let sendAddressTextField: UITextField = {
         let textField = UITextField()
-        textField.font = Static.Font.sendAddressFont
+        textField.font = Static.Font.textfieldFont
         textField.textAlignment = .center
         textField.placeholder = "Type address here"
+        textField.borderStyle = .roundedRect
+        return textField
+    }()
+    
+    private let amountLabel: UILabel = {
+        let label = UILabel()
+        label.font = Static.Font.labelDescriptionFont
+        label.textAlignment = .center
+        label.text = "Amount to send"
+        return label
+    }()
+    
+    private let amountTextField: UITextField = {
+        let textField = UITextField()
+        textField.font = Static.Font.textfieldFont
+        textField.textAlignment = .center
+        textField.placeholder = "Type amount here"
+        textField.borderStyle = .roundedRect
         return textField
     }()
     
@@ -49,6 +67,8 @@ final class SendViewController: UIViewController {
             arrangedSubviews: [
                 sendAddressDescriptionLabel,
                 sendAddressTextField,
+                amountLabel,
+                amountTextField,
                 sendButton
             ]
         )
