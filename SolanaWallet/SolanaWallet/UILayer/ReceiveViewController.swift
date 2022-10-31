@@ -49,6 +49,8 @@ final class ReceiveViewController: UIViewController {
         return label
     }()
     
+    private var balanceTopAnchorConstraint: NSLayoutConstraint?
+    
     private lazy var balanceStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -110,7 +112,7 @@ final class ReceiveViewController: UIViewController {
                     print("Error \(error)")
                 }
             }
-            self?.updateBalance()
+            self?.updateBalance(useIndicator: true, onFinish: {})
         }
     }
     
@@ -131,25 +133,29 @@ final class ReceiveViewController: UIViewController {
         
         // Indicator view
         
-        scrollView.addSubview(indicatorView)
+        view.addSubview(indicatorView)
         
         NSLayoutConstraint.activate([
-            indicatorView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor),
-            indicatorView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
+            indicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            indicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
         // Balance
         scrollView.addSubview(balanceStackView)
+        
+        let topAnchorContraint = balanceStackView.topAnchor.constraint(
+            equalTo: scrollView.safeAreaLayoutGuide.topAnchor,
+            constant: Static.Layout.stackViewInsets
+        )
+        topAnchorContraint.isActive = true
+        balanceTopAnchorConstraint = topAnchorContraint
         
         NSLayoutConstraint.activate([
             balanceStackView.leadingAnchor.constraint(
                 equalTo: scrollView.leadingAnchor,
                 constant: Static.Layout.stackViewInsets
             ),
-            balanceStackView.topAnchor.constraint(
-                equalTo: scrollView.safeAreaLayoutGuide.topAnchor,
-                constant: Static.Layout.stackViewInsets
-            ),
+            
             balanceStackView.trailingAnchor.constraint(
                 equalTo: scrollView.trailingAnchor,
                 constant: -Static.Layout.stackViewInsets
@@ -168,8 +174,10 @@ final class ReceiveViewController: UIViewController {
         
     }
     
-    private func updateBalance() {
-        startLoading()
+    private func updateBalance(useIndicator: Bool = false, onFinish: @escaping () -> Void) {
+        if useIndicator {
+            startLoading()
+        }
         try? viewModel?.getBalance { result in
             DispatchQueue.main.async { [weak self] in
                 switch result {
@@ -178,7 +186,12 @@ final class ReceiveViewController: UIViewController {
                 case .failure(let error):
                     print("Error \(error)")
                 }
-                self?.stopLoading()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    if useIndicator {
+                        self?.stopLoading()
+                    }
+                    onFinish()
+                })
             }
         }
     }
@@ -190,19 +203,29 @@ final class ReceiveViewController: UIViewController {
     
     @objc
     private func indicatorPulled() {
-        updateBalance()
+        updateBalance(onFinish: {
+            self.scrollView.refreshControl?.endRefreshing()
+        })
     }
     
     private func startLoading() {
         DispatchQueue.main.async { [weak self] in
+            self?.balanceTopAnchorConstraint?.constant = 40
+            UIView.animate(withDuration: 0.3) {
+                self?.view.layoutIfNeeded()
+            }
             self?.indicatorView.startAnimating()
         }
         
     }
     
     private func stopLoading() {
-        DispatchQueue.main.async { [weak self] in
-            self?.indicatorView.stopAnimating()
+        DispatchQueue.main.async { [unowned self] in
+            self.indicatorView.stopAnimating()
+            self.balanceTopAnchorConstraint?.constant = 0
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
         }
     }
 
