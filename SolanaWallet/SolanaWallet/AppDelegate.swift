@@ -48,7 +48,8 @@ enum Builder {
         let urlSession = buildURLSession()
         let baseNetowork = BaseNetworkManager(networkSession: urlSession)
         let networkManager = NetworkManager(network: baseNetowork)
-        let viewModel = ReceiveViewModel(networkManager: networkManager)
+        let currentUserData = UserData.current
+        let viewModel = ReceiveViewModel(networkManager: networkManager, state: currentUserData)
         receiveViewController.viewModel = viewModel
         return receiveViewController
     }

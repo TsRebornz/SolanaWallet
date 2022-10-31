@@ -52,6 +52,8 @@
 		A1886CB7290AF4DC006825F0 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CB6290AF4DC006825F0 /* ApiResponse.swift */; };
 		A1886CB9290AF4FA006825F0 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CB8290AF4FA006825F0 /* ResponseError.swift */; };
 		A1886CBB290C48AC006825F0 /* Fee.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CBA290C48AC006825F0 /* Fee.swift */; };
+		A1F3E39B291009A50063C670 /* SendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F3E39A291009A50063C670 /* SendViewModel.swift */; };
+		A1F3E39E291009D90063C670 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F3E39D291009D90063C670 /* UserData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +122,8 @@
 		A1886CB6290AF4DC006825F0 /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		A1886CB8290AF4FA006825F0 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseError.swift; sourceTree = "<group>"; };
 		A1886CBA290C48AC006825F0 /* Fee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fee.swift; sourceTree = "<group>"; };
+		A1F3E39A291009A50063C670 /* SendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewModel.swift; sourceTree = "<group>"; };
+		A1F3E39D291009D90063C670 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +191,7 @@
 		A1886C2F2907E66F006825F0 /* SolanaWallet */ = {
 			isa = PBXGroup;
 			children = (
+				A1F3E39C291009CE0063C670 /* State */,
 				A120E1AC290FC08500406412 /* SolanaBlockChainClient */,
 				A1886CA52909A223006825F0 /* NetworkLayer */,
 				A1886C7629085780006825F0 /* UILayer */,
@@ -242,6 +247,7 @@
 				A1886C7729085780006825F0 /* ReceiveViewController.swift */,
 				A1886C9F290954AE006825F0 /* ReceiveViewModel.swift */,
 				A1886C7829085780006825F0 /* SendViewController.swift */,
+				A1F3E39A291009A50063C670 /* SendViewModel.swift */,
 			);
 			path = UILayer;
 			sourceTree = "<group>";
@@ -272,6 +278,14 @@
 				A1886CBA290C48AC006825F0 /* Fee.swift */,
 			);
 			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		A1F3E39C291009CE0063C670 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				A1F3E39D291009D90063C670 /* UserData.swift */,
+			);
+			path = State;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,12 +428,14 @@
 				A1886C83290857FF006825F0 /* PublicKey.swift in Sources */,
 				A1886C9029094B39006825F0 /* Ed25519HDKey.swift in Sources */,
 				A1886C89290857FF006825F0 /* Base58.swift in Sources */,
+				A1F3E39B291009A50063C670 /* SendViewModel.swift in Sources */,
 				A1886C86290857FF006825F0 /* PBKDF2.swift in Sources */,
 				A1886CA429099962006825F0 /* Base58.swift in Sources */,
 				A120E1B6290FD86F00406412 /* FeeAmount.swift in Sources */,
 				A1886C9E29094DCC006825F0 /* Array + CryptoSwift.swift in Sources */,
 				A1886C7929085780006825F0 /* ReceiveViewController.swift in Sources */,
 				A120E1BE290FDB8400406412 /* BytesEncodable.swift in Sources */,
+				A1F3E39E291009D90063C670 /* UserData.swift in Sources */,
 				A1886C85290857FF006825F0 /* NetworkModel.swift in Sources */,
 				A1886C9C29094D1B006825F0 /* String + CryptoSwift.swift in Sources */,
 				A1886CAD2909A714006825F0 /* ApiRequest.swift in Sources */,

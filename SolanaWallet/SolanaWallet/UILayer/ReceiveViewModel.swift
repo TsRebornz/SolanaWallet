@@ -2,11 +2,15 @@ import Foundation
 
 final class ReceiveViewModel {
         
-    private var account: SolanaAccount?
+    private var account: SolanaAccount {
+        userData.account
+    }
     private var networkManager: NetworkManager
+    private let userData: UserData
     
-    init(networkManager: NetworkManager) {
+    init(networkManager: NetworkManager, state: UserData) {
         self.networkManager = networkManager
+        self.userData = state
     }
     
     func createNewAccount(completionHandler: @escaping (
@@ -14,11 +18,9 @@ final class ReceiveViewModel {
     ) -> Void ) {
         Task {
             do {
-                self.account = try await SolanaAccount(phrase: [], network: .devnet)
-                guard let acc = self.account else {
-                    return
-                }
-                completionHandler(.success(acc))
+                let newAccount = try await SolanaAccount(phrase: [], network: .devnet)
+                userData.account = newAccount
+                completionHandler(.success(newAccount))
             } catch let e {
                 completionHandler(.failure(e))
             }
@@ -26,9 +28,7 @@ final class ReceiveViewModel {
     }
     
     func getBalance(completionHandler: @escaping (Result<Int, Error>) -> Void) throws {
-        guard let publicKeyBase58 = account?.publicKey.base58EncodedString else {
-            throw SolanaError.unknown
-        }
+        let publicKeyBase58 = account.publicKey.base58EncodedString
         networkManager.getBalance(publicKeyBase58: publicKeyBase58, completionHandler: { result in
             switch result {
             case .success(let balance):
