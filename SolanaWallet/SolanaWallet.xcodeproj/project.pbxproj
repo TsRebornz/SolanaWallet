@@ -54,6 +54,8 @@
 		A1886CBB290C48AC006825F0 /* Fee.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1886CBA290C48AC006825F0 /* Fee.swift */; };
 		A1F3E39B291009A50063C670 /* SendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F3E39A291009A50063C670 /* SendViewModel.swift */; };
 		A1F3E39E291009D90063C670 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F3E39D291009D90063C670 /* UserData.swift */; };
+		A1F3E3A0291043310063C670 /* SystemProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F3E39F291043310063C670 /* SystemProgram.swift */; };
+		A1F3E3A22910470B0063C670 /* Number + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F3E3A12910470B0063C670 /* Number + extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +126,8 @@
 		A1886CBA290C48AC006825F0 /* Fee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fee.swift; sourceTree = "<group>"; };
 		A1F3E39A291009A50063C670 /* SendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewModel.swift; sourceTree = "<group>"; };
 		A1F3E39D291009D90063C670 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		A1F3E39F291043310063C670 /* SystemProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemProgram.swift; sourceTree = "<group>"; };
+		A1F3E3A12910470B0063C670 /* Number + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number + extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,8 @@
 				A120E1B9290FD98400406412 /* Data + extension.swift */,
 				A120E1BB290FDAD100406412 /* AccountMeta + extension.swift */,
 				A120E1BD290FDB8400406412 /* BytesEncodable.swift */,
+				A1F3E39F291043310063C670 /* SystemProgram.swift */,
+				A1F3E3A12910470B0063C670 /* Number + extension.swift */,
 			);
 			path = SolanaBlockChainClient;
 			sourceTree = "<group>";
@@ -430,6 +436,7 @@
 				A1886C89290857FF006825F0 /* Base58.swift in Sources */,
 				A1F3E39B291009A50063C670 /* SendViewModel.swift in Sources */,
 				A1886C86290857FF006825F0 /* PBKDF2.swift in Sources */,
+				A1F3E3A22910470B0063C670 /* Number + extension.swift in Sources */,
 				A1886CA429099962006825F0 /* Base58.swift in Sources */,
 				A120E1B6290FD86F00406412 /* FeeAmount.swift in Sources */,
 				A1886C9E29094DCC006825F0 /* Array + CryptoSwift.swift in Sources */,
@@ -441,6 +448,7 @@
 				A1886CAD2909A714006825F0 /* ApiRequest.swift in Sources */,
 				A120E1B2290FC24400406412 /* Transaction.swift in Sources */,
 				A1886C312907E66F006825F0 /* AppDelegate.swift in Sources */,
+				A1F3E3A0291043310063C670 /* SystemProgram.swift in Sources */,
 				A1886CA22909991F006825F0 /* SolanaError.swift in Sources */,
 				A120E1B0290FC18600406412 /* PreparedTransaction.swift in Sources */,
 				A1886CA72909A22E006825F0 /* NetworkManager.swift in Sources */,

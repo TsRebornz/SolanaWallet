@@ -114,7 +114,30 @@ final class SendViewController: UIViewController {
     
     @objc
     private func sendButtonTapped() {
-        print("Button tapped")
+        guard let destinationAddress = sendAddressTextField.text,
+              let amount = amountTextField.text,
+              !destinationAddress.isEmpty,
+              !amount.isEmpty
+        else {
+            showAlertView(message: "Destination and amount must not be empty")
+            return
+        }
+        
+        viewModel.sendMoney(destination: destinationAddress, amount: Int(amount)!) { [weak self] result in
+            switch result {
+            case .success:
+                self?.showAlertView(message: "Success", style: .default)
+            case .failure(let error):
+                self?.showAlertView(message: "Error \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func showAlertView(message: String, style: UIAlertAction.Style = .cancel) {
+        let alertViewController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: style, handler: nil)
+        alertViewController.addAction(action)
+        present(alertViewController, animated: true, completion: nil)
     }
     
 }

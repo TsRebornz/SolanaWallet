@@ -8,17 +8,13 @@ extension UInt8: BytesEncodable {
     public var bytes: [UInt8] { [self] }
 }
 
-//extension UInt64: BytesEncodable {
-//    public var bytes: [UInt8] {
-//        [self]
-//    }
-//}
-//
-//extension UInt32: BytesEncodable {
-//    public var bytes: [UInt8] {
-//        [self]
-//    }
-//}
+extension UInt64: BytesEncodable {
+    // do nothing
+}
+
+extension UInt32: BytesEncodable {
+    // do nothing
+}
 
 // extension SolanaSDK.PublicKey: BytesEncodable {}
 
